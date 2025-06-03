@@ -10,7 +10,7 @@
 ### Infrastructure & Configuration
 - [x] ✅ Initialisation du projet
   - [x] ✅ Configurer la structure des dossiers selon l'architecture multi-locataire
-  - [ ] 🔄 Mettre en place ESLint, Prettier et Husky
+  - [x] ✅ Mettre en place ESLint, Prettier et Husky
   - [ ] ⏳ Configurer Supabase et l'environnement de développement
 
 ### Base de Données
@@ -69,10 +69,10 @@
 
 ## Tâche Actuelle
 
-### 🔄 Configuration de l'environnement de développement
-- [ ] Configurer ESLint et Prettier
-- [ ] Mettre en place Husky pour les hooks Git
-- [ ] Configurer les scripts NPM
+### ✅ Configuration de l'environnement de développement
+- [x] ✅ Configurer ESLint et Prettier
+- [x] ✅ Mettre en place Husky pour les hooks Git
+- [x] ✅ Configurer les scripts NPM
 
 ## Prochaine Tâche
 - Configuration de Supabase et initialisation de la base de données

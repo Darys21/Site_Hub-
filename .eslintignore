@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+.next
+out
+build
+
+# Build files
+/dist
+
+# Cache
+.cache/
+.eslintcache
+
+# Environment variables
+.env*.local
+
+# IDE specific files
+.vscode/
+.idea/
+
+# TypeScript
+*.d.ts
+
+# Next.js
+.next/
+out/
+
+# Testing
+coverage/
+
+# Misc
+.DS_Store
+*.pem
