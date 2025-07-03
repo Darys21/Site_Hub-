@@ -1,23 +1,32 @@
-# Plan de Travail Agile - Plateforme eCommerce SaaS
+# Plan de Travail Agile - Plateforme eCommerce SaaS avec CMS
 
 ## Légende
 - 🔄 En cours
 - ✅ Terminé
 - ⏳ En attente
 
-## Sprint 0 : Préparation (2 jours)
+## Sprint 0 : Préparation & Configuration (3 jours)
 
 ### Infrastructure & Configuration
 - [x] ✅ Initialisation du projet
-  - [x] ✅ Configurer la structure des dossiers selon l'architecture multi-locataire
+  - [x] ✅ Configurer la structure des dossiers
   - [x] ✅ Mettre en place ESLint, Prettier et Husky
-  - [ ] ⏳ Configurer Supabase et l'environnement de développement
+  - [ ] 🔄 Configuration de Supabase
+    - [ ] Créer le projet Supabase
+    - [ ] Configurer les variables d'environnement
+    - [ ] Initialiser le client Supabase
 
 ### Base de Données
-- [ ] ⏳ Modélisation des données
-  - [ ] Schéma utilisateurs et rôles
-  - [ ] Schéma des boutiques et produits
-  - [ ] Schéma des commandes
+- [ ] ⏳ Configuration de la base de données
+  - [ ] Créer les tables principales
+    - [ ] `profiles` (utilisateurs)
+    - [ ] `shops` (boutiques)
+    - [ ] `products` (produits)
+    - [ ] `product_variants` (variantes de produits)
+    - [ ] `categories` (catégories de produits)
+  - [ ] Configurer les relations entre les tables
+  - [ ] Mettre en place le RLS (Row Level Security)
+  - [ ] Créer les politiques d'accès
 
 ## Sprint 1 : Authentification & Espace Vendeur (5 jours)
 
@@ -26,56 +35,75 @@
   - [ ] Inscription/Connexion vendeur
   - [ ] Inscription/Connexion client
   - [ ] Gestion des sessions
+  - [ ] Récupération de mot de passe
 
 ### Tableau de Bord Vendeur
 - [ ] ⏳ Tableau de bord principal
   - [ ] Vue d'ensemble des ventes
   - [ ] Statistiques de base
+  - [ ] Vue rapide des commandes récentes
 
-## Sprint 2 : Gestion des Produits & Boutique (5 jours)
+## Sprint 2 : Gestion des Produits & CMS (7 jours)
 
 ### Gestion des Produits
 - [ ] ⏳ CRUD produits
-- [ ] ⏳ Gestion des catégories
-- [ ] ⏳ Téléchargement d'images
+  - [ ] Création/édition de produits
+  - [ ] Gestion des variantes
+  - [ ] Téléchargement d'images
+  - [ ] Gestion des stocks
+
+### Fonctionnalités CMS
+- [ ] ⏳ Gestion des pages
+  - [ ] Éditeur WYSIWYG
+  - [ ] Gestion des modèles
+  - [ ] Sections modulaires
+- [ ] ⏳ Gestion des médias
+  - [ ] Bibliothèque de médias
+  - [ ] Téléchargement/gestion des fichiers
+
+## Sprint 3 : Boutique en Ligne (5 jours)
 
 ### Page Boutique
 - [ ] ⏳ Page boutique personnalisable
-- [ ] ⏳ Affichage des produits
-- [ ] ⏳ Filtres et recherche
+  - [ ] Thème personnalisable
+  - [ ] Sections modulaires
+  - [ ] SEO de base
+- [ ] ⏳ Catalogue produits
+  - [ ] Filtres et recherche
+  - [ ] Fiches produits détaillées
+  - [ ] Galerie d'images
 
-## Sprint 3 : Commandes & Notifications (5 jours)
+## Sprint 4 : Commandes & Paiements (5 jours)
 
 ### Système de Commandes
 - [ ] ⏳ Panier d'achat
 - [ ] ⏳ Processus de commande
-- [ ] ⏳ Historique des commandes
+- [ ] ⏳ Intégration de paiement (Stripe)
+- [ ] ⏳ Notifications par email
 
-### Notifications
-- [ ] ⏳ Intégration WhatsApp
-- [ ] ⏳ Notifications en temps réel
-
-## Sprint 4 : Administration & Finalisation (3 jours)
+## Sprint 5 : Administration & Finalisation (5 jours)
 
 ### Console d'Administration
 - [ ] ⏳ Gestion des utilisateurs
 - [ ] ⏳ Gestion des boutiques
 - [ ] ⏳ Tableaux de bord avancés
+- [ ] ⏳ Paramètres généraux
 
 ### Finalisation
 - [ ] ⏳ Tests utilisateurs
-- [ ] Corrections de bugs
-- [ ] Documentation
+- [ ] ⏳ Optimisation des performances
+- [ ] ⏳ Documentation
 
 ## Tâche Actuelle
 
-### ✅ Configuration de l'environnement de développement
-- [x] ✅ Configurer ESLint et Prettier
-- [x] ✅ Mettre en place Husky pour les hooks Git
-- [x] ✅ Configurer les scripts NPM
+### 🔄 Configuration de Supabase
+- [x] Créer le projet Supabase
+- [ ] Configurer les variables d'environnement
+- [ ] Initialiser le client Supabase
+- [ ] Créer la structure de la base de données
 
 ## Prochaine Tâche
-- Configuration de Supabase et initialisation de la base de données
+- Configuration des variables d'environnement et initialisation du client Supabase
 
 ## Structure des Dossiers
 ```
@@ -90,55 +118,58 @@ src/
 │   │   ├── seller/
 │   │   │   ├── products/
 │   │   │   ├── orders/
-│   │   │   ├── settings/
-│   │   │   └── analytics/
+│   │   │   ├── pages/
+│   │   │   ├── media/
+│   │   │   └── settings/
 │   │   │
 │   │   └── admin/
 │   │       ├── users/
 │   │       ├── stores/
-│   │       ├── settings/
-│   │       └── analytics/
+│   │       └── settings/
 │   │
-│   ├── (store)/
-│   │   └── [storeSlug]/
-│   │       ├── products/
-│   │       ├── cart/
-│   │       ├── checkout/
-│   │       └── order-confirmation/
-│   │
-│   └── (marketing)/
-│       ├── about/
-│       ├── contact/
-│       └── pricing/
+│   └── (store)/
+│       └── [storeSlug]/
+│           ├── products/
+│           ├── pages/
+│           └── cart/
 │
 ├── components/
-│   ├── ui/           # Composants UI réutilisables
-│   ├── auth/         # Composants liés à l'authentification
-│   ├── dashboard/    # Composants du tableau de bord
-│   ├── storefront/   # Composants de la boutique
-│   ├── forms/        # Composants de formulaire
-│   └── layout/       # Composants de mise en page
+│   ├── cms/
+│   │   ├── editor/
+│   │   ├── blocks/
+│   │   └── media-library/
+│   │
+│   ├── products/
+│   ├── cart/
+│   └── ui/
 │
-├── lib/
-│   ├── utils/        # Fonctions utilitaires
-│   ├── constants/    # Constantes de l'application
-│   ├── supabase/     # Configuration et clients Supabase
-│   ├── api/          # Appels API
-│   └── validations/  # Schémas de validation
-│
-├── assets/
-│   ├── images/       # Images de l'application
-│   ├── icons/        # Icônes
-│   ├── fonts/        # Polices de caractères
-│   └── styles/       # Fichiers de style globaux
-│
-├── hooks/            # Hooks personnalisés
-├── types/            # Définitions de types TypeScript
-├── contexts/         # Contextes React
-└── config/          # Fichiers de configuration
+└── lib/
+    ├── supabase/
+    │   ├── client.ts
+    │   └── server.ts
+    └── utils/
 ```
 
-## Notes
-- Mettre à jour ce fichier après chaque tâche terminée
-- Faire un commit après chaque tâche terminée
-- Documenter les décisions importantes
+## Schéma de la Base de Données
+
+### Tables Principales
+1. **profiles** - Gestion des utilisateurs
+2. **shops** - Informations des boutiques
+3. **products** - Produits des boutiques
+4. **product_variants** - Variantes de produits
+5. **categories** - Catégories de produits
+6. **pages** - Pages personnalisées
+7. **media** - Fichiers multimédias
+8. **navigation_menus** - Menus de navigation
+
+### Relations Clés
+- Un utilisateur peut posséder plusieurs boutiques
+- Une boutique peut avoir plusieurs produits et pages
+- Un produit peut appartenir à plusieurs catégories
+- Les médias sont liés aux boutiques et aux produits/pages
+
+## Notes Importantes
+- Toutes les requêtes doivent respecter les politiques RLS
+- Les médias sont stockés dans Supabase Storage
+- Les thèmes sont stockés sous forme de configurations JSON
+- Les pages utilisent un système de blques modulaires
